@@ -34,13 +34,10 @@ int main()
 
         std::cout << " tempo " << tempo << " trocas " << est.trocas << " comparacoes " << est.comparacoes << std::endl;
 
-        // dados.imprime_registros();
-
         bool estaOrdenado = dados.checaSeRegistrosOrdenados();
         bool ordenacaoEstavel = dados.checaSeOrdenacaoFoiEstavel();
         std::cout << (estaOrdenado ? "Vetor ordenado" : "Vetor NAO ordenado") << " - "
                   << (ordenacaoEstavel ? "Ordenacao foi estavel" : "Ordenacao NAO foi estavel") << std::endl;
-
     }
 
     return 0;

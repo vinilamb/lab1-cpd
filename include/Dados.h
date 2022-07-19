@@ -51,6 +51,7 @@ class Dados
         // funcao que gera sequencia de gaps
         std::vector<int> geraSequenciaDeGaps(int tamanho, TipoShellSort tipo);
 
+        void insercaoDiretaDoShellSort(int inicio, int incremento);
 };
 
 #endif // DADOS_H

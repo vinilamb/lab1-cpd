@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1658008186 source:c:\users\vinicius.magalhes\desktop\ufrgs\2022.1\classificação e pesquisa de dados\lab01\lab1-cpd\main.cpp
+	<iostream>
+	"include/Dados.h"
+
+1658006511 c:\users\vinicius.magalhes\desktop\ufrgs\2022.1\classificação e pesquisa de dados\lab01\lab1-cpd\include\dados.h
+	<vector>
+	<random>
+	"../include/Registro.h"
+	"../include/Utils.h"
+
+1657911250 c:\users\vinicius.magalhes\desktop\ufrgs\2022.1\classificação e pesquisa de dados\lab01\lab1-cpd\include\registro.h
+	<ostream>
+
+1657911250 c:\users\vinicius.magalhes\desktop\ufrgs\2022.1\classificação e pesquisa de dados\lab01\lab1-cpd\include\utils.h
+	<sys/time.h>
+
+1657911250 source:c:\users\vinicius.magalhes\desktop\ufrgs\2022.1\classificação e pesquisa de dados\lab01\lab1-cpd\src\registro.cpp
+	"../include/Registro.h"
+
+1657911250 source:c:\users\vinicius.magalhes\desktop\ufrgs\2022.1\classificação e pesquisa de dados\lab01\lab1-cpd\src\utils.cpp
+	"../include/Utils.h"
+	<unistd.h>
+
+1658008164 source:c:\users\vinicius.magalhes\desktop\ufrgs\2022.1\classificação e pesquisa de dados\lab01\lab1-cpd\src\dados.cpp
+	"../include/Dados.h"
+	<iostream>
+	<algorithm>
+

@@ -37,10 +37,22 @@ Estatisticas Dados::ordenaComBubbleSort()
 
     // TODO: implementar codigo do bubbleSort
 
-    
-    
-    
-    
+    int m = registros.size() - 1, k = 0;
+    bool troca;
+    do {
+      troca = false;
+      for (long long i = 0; i < m; i++) {
+        if (registros[i] > registros[i+1]) {
+            Registro temp = registros[i];
+            registros[i] = registros[i+1];
+            registros[i+1] = temp;
+
+            troca = true;
+            k = i;
+        }
+      }
+      m = k;
+    } while(troca);
 
     return est;
 }
@@ -52,13 +64,17 @@ Estatisticas Dados::ordenaComInsertionSort()
     est.comparacoes = 0;
 
     // TODO: implementar codigo do insertionSort
-
-
-
-
-
-
+    for (long long j = 1; j < registros.size(); j++) {
+        Registro chave = registros[j];
+        long long i = j - 1;
+        while ((i >= 0) && (registros[i] > chave)) {
+            registros[i + 1] = registros[i];
+            i--;
+        }
+        registros[i + 1] = chave;
+    }
     return est;
+
 }
 
 Estatisticas Dados::ordenaComShellSort(TipoShellSort tipo)
@@ -75,16 +91,29 @@ Estatisticas Dados::ordenaComShellSort(TipoShellSort tipo)
 //        std::cout << sequenciaDeGaps[i] << ' ';
 
     // TODO: implementar codigo do shellSort
-
-
-    
-    
-    
-    
-    
-    
+    for (int p = sequenciaDeGaps.size() - 1; p >= 0; p--) {
+        int h = sequenciaDeGaps[p];
+        for (int inicio = 0; inicio < h; inicio++) {
+            insercaoDiretaDoShellSort(inicio, h);
+        }
+    }
 
     return est;
+}
+
+void Dados::insercaoDiretaDoShellSort(int inicio, int incremento) {
+    for (long long j = inicio + incremento; j < registros.size(); j += incremento) {
+        Registro chave = registros[j];
+
+        long long i = j - incremento;
+
+        while (i >= 0 && registros[i] > chave) {
+            registros[i + incremento] = registros[i];
+            i = i - incremento;
+        }
+
+        registros[i + incremento] = chave;
+    }
 }
 
 bool Dados::checaSeOrdenacaoFoiEstavel()
@@ -92,12 +121,13 @@ bool Dados::checaSeOrdenacaoFoiEstavel()
     bool ehEstavel=true;
 
     // TODO: checar se elementos com chave igual mantem a ordem inicial analisando seus dados satelites
-
-
-
-
-
-
+    for (long long i = 0; i < registros.size() - 1; i++) {
+        if ((registros[i] == registros[i + 1]) && (registros[i].getDadoSatelite() > registros[i + 1].getDadoSatelite()))
+        {
+            ehEstavel = false;
+            break;
+        }
+    }
 
     return ehEstavel;
 }
