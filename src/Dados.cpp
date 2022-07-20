@@ -42,6 +42,8 @@ Estatisticas Dados::ordenaComBubbleSort()
     do {
       troca = false;
       for (long long i = 0; i < m; i++) {
+
+        est.comparacoes++;
         if (registros[i] > registros[i+1]) {
             Registro temp = registros[i];
             registros[i] = registros[i+1];
@@ -49,6 +51,7 @@ Estatisticas Dados::ordenaComBubbleSort()
 
             troca = true;
             k = i;
+            est.trocas++;
         }
       }
       m = k;
@@ -67,9 +70,15 @@ Estatisticas Dados::ordenaComInsertionSort()
     for (long long j = 1; j < registros.size(); j++) {
         Registro chave = registros[j];
         long long i = j - 1;
-        while ((i >= 0) && (registros[i] > chave)) {
-            registros[i + 1] = registros[i];
-            i--;
+        while (i >= 0) {
+            est.comparacoes++;
+            if (registros[i] > chave) {
+                registros[i + 1] = registros[i];
+                i--;
+                est.trocas++;
+            } else {
+                break;
+            }
         }
         registros[i + 1] = chave;
     }
@@ -94,24 +103,31 @@ Estatisticas Dados::ordenaComShellSort(TipoShellSort tipo)
     for (int p = sequenciaDeGaps.size() - 1; p >= 0; p--) {
         int h = sequenciaDeGaps[p];
         for (int inicio = 0; inicio < h; inicio++) {
-            insercaoDiretaDoShellSort(inicio, h);
+            insercaoDiretaDoShellSort(inicio, h, est);
         }
     }
 
     return est;
 }
 
-void Dados::insercaoDiretaDoShellSort(int inicio, int incremento) {
+void Dados::insercaoDiretaDoShellSort(int inicio, int incremento, Estatisticas& est) {
     for (long long j = inicio + incremento; j < registros.size(); j += incremento) {
         Registro chave = registros[j];
 
         long long i = j - incremento;
 
-        while (i >= 0 && registros[i] > chave) {
-            registros[i + incremento] = registros[i];
-            i = i - incremento;
+        while (i >= 0) {
+            est.comparacoes++;
+            if (registros[i] > chave) {
+                registros[i + incremento] = registros[i];
+                i = i - incremento;
+                est.trocas++;
+            } else {
+                break;
+            }
         }
 
+        est.trocas++;
         registros[i + incremento] = chave;
     }
 }
